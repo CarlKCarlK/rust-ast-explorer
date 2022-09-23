@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Shortest Paper</title>
+</head>
+
+<body>
+
+    <table width="100%" border="0">
+        <tbody>
+            <tr>
+                <td></td>
+                <td width="700">
+                    <h2 style="text-align:center">COUNTEREXAMPLE TO EULER'S CONJECTURE<br>
+                        ON SUMS OF LIKE POWERS</h2>
+                    <H3 style="text-align:center">BY RUST AND WASM</H3>
+                    <H4 style="text-align:center">Communicated by Rust Shortest Paper Team[<a href=#team>3</a>], January
+                        30, 2022</H4>
+                    <p>&nbsp; &nbsp; &nbsp; A direct search up to
+                        <input onkeypress="clickPress(event)" id="end" size=4 placeholder=200>
+                        in your Web Browser yields
+                        <button id="yields">Go!</button>
+                    <div style="text-align:center" id="result">...</div>
+                    <p>as the smallest instances in which four fifth powers sum to a fifth power. This
+                        is a counterexample to a conjecture by Euler[1] that at least <em>n</em> <em>n</em>th powers
+                        are
+                        required
+                        to sum to an <em>n</em>th power, <em>n</em>&gt;2. </p>
+                    <H4 style="text-align:center">REFERENCE</H4>
+                    <p>&nbsp;&nbsp;1. L. E. Dickson, <em>History of the theory of numbers</em>, Vol. 2, Chelsea, New
+                        York, 1952, p.648.</p>
+                    <p>&nbsp;&nbsp;2. Lander, L. J.; Parkin, T. R. (1966).
+                        "Counterexample to Euler's conjecture on sums of like powers". <em>Bull. Amer. Math. Soc.</em>
+                        72 (6): 1079. <a
+                            href="https://www.ams.org/journals/bull/1966-72-06/S0002-9904-1966-11654-3/S0002-9904-1966-11654-3.pdf">(pdf
+                            format)</a>
+                    </p>
+                    <div id="team" />
+                    <p>&nbsp;&nbsp;
+                        3. Kadie, C. M. <a href=https://github.com/CarlKCarlK>🡕</a>, HundredLuck <a
+                            href=https://www.reddit.com/user/HundredLuck>🡕</a>,
+                        yyogo<a href=https://github.com/yyogo>🡕</a>,
+                        A1oso<a href=https://www.reddit.com/user/A1oso />🡕</a>
+                        (2022). <a href=" https://github.com/CarlKCarlK/shortestpaper">
+                            https://github.com/CarlKCarlK/shortestpaper</a>,
+                    </p>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="module">
+        import init, { greet, search } from "./pkg/rust_ast_explorer.mjs";
+        init()
+            .then(() => {
+                // alert("Error: Must be a positive integer")
+                // greet("WebAssembly")
+                // alert(search(20));
+            });
+
+        function fifths() {
+            var end_string = document.getElementById('end').value
+            if (end_string == "") { end_string = "200"; }
+            var end = parseInt(end_string);
+
+            if (isNaN(end) || end <= 0) {
+                alert("Error: Must be a positive integer");
+                return;
+            }
+
+            var start_time = performance.now();
+            document.getElementById('result').innerHTML = "<em>working</em>";
+            setTimeout(() => {
+                var result = search(end);
+                var delta = performance.now() - start_time;
+                document.getElementById('result').innerHTML = result + "<p><em>elapsed time: " + (delta / 1000.0).toFixed(2) + " seconds</em></p>";
+            }, 0);
+        }
+
+        function clickPress(event) {
+            if (event.keyCode == 13) {
+                fifths();
+            }
+        }
+
+
+        document.getElementById('yields').addEventListener('click', fifths);
+        document.getElementById('end').addEventListener('keyup', clickPress);
+
+    </script>
+
+</body>
+
+</html>
