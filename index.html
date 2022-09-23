@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Shortest Paper</title>
+    <title>Rust AST Explorer</title>
 </head>
 
 <body>
@@ -15,12 +15,14 @@
                 <td width="700">
                     <h2 style="text-align:center">Rust AST Explorer</h2>
                     <!-- cmk replace placeholder -->
-                    <p>&nbsp; &nbsp; &nbsp; Paste Rust code
+                    <p>Paste Rust code
                         <input onkeypress="clickPress(event)" id="end" size=80 placeholder="fn main() { println!(); }">
 
                         <button id="yields">Go!</button>
-                    <div style="text-align:center" id="result">...</div>
-
+                    <div style="  display: block;
+                                                font-family: monospace;
+                                                white-space: pre;
+                                                margin: 1em 0;" id="result">...</div>
                 </td>
                 <td></td>
             </tr>
@@ -43,7 +45,7 @@
             setTimeout(() => {
                 // cmk rename search and end_string
                 var result = search(end_string);
-                alert(result)
+                // alert(result)
                 document.getElementById('result').innerHTML = result;
             }, 0);
         }
