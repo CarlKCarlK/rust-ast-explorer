@@ -15,7 +15,6 @@
                 <td width="700">
                     <h2 style="text-align:center">Rust AST Explorer</h2>
                     <p>Paste Rust code</p>
-                    <!-- <input onkeypress="clickPress(event)" id="cmk" size=80 placeholder="fn main() { println!(); }"> -->
                     <textarea onkeypress="clickPress(event)" rows="5" cols="80" id="end"
                         placeholder="fn main() { println!(); }"></textarea>
 
@@ -41,7 +40,7 @@
                 // alert(search(20));
             });
 
-        function fifths() { // cmk rename
+        function fifths() { // todo rename
             var end_string = document.getElementById('end').value
             if (end_string == "") { end_string = "fn main() { println!(); }"; }
             document.getElementById('result').innerHTML = "<em>working</em>";
