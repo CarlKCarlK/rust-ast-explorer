@@ -1,39 +1,10 @@
 use html_escape::encode_text;
-// cmk make dual license
-use syn::{
-    fold::{self, Fold},
-    Expr, ItemFn, Stmt,
-};
+// todo make dual license
+
 use wasm_bindgen::prelude::*;
 
 // See https://developer.mozilla.org/en-US/docs/WebAssembly/Rust_to_wasm
 // See https://docs.rs/syn/latest/syn/struct.File.html
-
-struct Args {
-    result: String,
-}
-
-impl Fold for Args {
-    fn fold_expr(&mut self, e: Expr) -> Expr {
-        self.result += format!("{:?}", e).as_str();
-        e
-    }
-
-    fn fold_stmt(&mut self, s: Stmt) -> Stmt {
-        match s {
-            Stmt::Local(s) => {
-                // if s.init.is_some() && self.should_print_pat(&s.pat) {
-                //     self.let_and_print(s)
-                // } else {
-                //     Stmt::Local(fold::fold_local(self, s))
-                // }
-                self.result += "Local";
-                Stmt::Local(s)
-            }
-            _ => fold::fold_stmt(self, s),
-        }
-    }
-}
 
 #[wasm_bindgen]
 extern "C" {
@@ -47,19 +18,18 @@ pub fn greet(name: &str) {
 
 #[wasm_bindgen]
 pub fn search(code: &str) -> String {
-    let item_fn = syn::parse_str::<ItemFn>(code).expect("parse_str fails cmk");
-    let result = format!("{:#?}", item_fn);
-    let html = encode_text(&result).into_owned();
-
-    // let mut args = Args {
-    //     result: "".to_string(),
-    // };
-    // let _output = args.fold_item_fn(item_fn);
-
-    html
+    let ast_result = syn::parse_str::<syn::File>(code);
+    match ast_result {
+        Ok(ast) => {
+            let debug_string = format!("{:#?}", ast);
+            let html = encode_text(&debug_string).into_owned();
+            html
+        }
+        Err(e) => {
+            format!("Error: {}", e)
+        }
+    }
 }
-
-// cmk return some type of nice error as string
 
 #[test]
 fn test() {
