@@ -36,12 +36,14 @@
                 // alert(search(20));
             });
 
-        function fifths() {
+        function fifths() { // cmk rename
             var end_string = document.getElementById('end').value
+            if (end_string == "") { end_string = "fn main() { println!(); }"; }
             document.getElementById('result').innerHTML = "<em>working</em>";
             setTimeout(() => {
                 // cmk rename search and end_string
                 var result = search(end_string);
+                alert(result)
                 document.getElementById('result').innerHTML = result;
             }, 0);
         }

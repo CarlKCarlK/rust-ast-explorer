@@ -71,18 +71,15 @@ pub fn search(code: &str) -> String {
     };
     let _output = args.fold_item_fn(item_fn);
 
-    args.result
+    format!("code='{}', result='{}'", code, args.result)
 }
+
+// cmk return some type of nice error as string
 
 #[test]
 fn test() {
-    let code = r#"
-    fn main() {
-        let a = 1;
-        a = 2;
-        a += 3;
-    }
-    "#;
+    let code = "fn main() { println!(); }";
     let result = search(code);
-    assert_eq!(result, "LocalAssignAssignOp");
+    println!("result='{}'", result);
+    assert_eq!(result, "code='fn main() { println!(); }', result=''");
 }
