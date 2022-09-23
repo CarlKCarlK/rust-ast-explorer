@@ -11,3 +11,6 @@ lto = true
 
 [dependencies]
 wasm-bindgen = "0.2.74"
+syn = { version = "1.0.60", features = ["extra-traits", "full", "fold"] }
+quote = "1.0.9"
+# proc-macro2 = "1.0.43"

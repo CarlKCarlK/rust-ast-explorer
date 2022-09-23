@@ -16,7 +16,7 @@
                     <h2 style="text-align:center">Rust AST Explorer</h2>
                     <!-- cmk replace placeholder -->
                     <p>&nbsp; &nbsp; &nbsp; Paste Rust code
-                        <input onkeypress="clickPress(event)" id="end" size=80 placeholder=200>
+                        <input onkeypress="clickPress(event)" id="end" size=80 placeholder="fn main() { println!(); }">
 
                         <button id="yields">Go!</button>
                     <div style="text-align:center" id="result">...</div>
@@ -38,20 +38,11 @@
 
         function fifths() {
             var end_string = document.getElementById('end').value
-            if (end_string == "") { end_string = "200"; }
-            var end = parseInt(end_string);
-
-            if (isNaN(end) || end <= 0) {
-                alert("Error: Must be a positive integer");
-                return;
-            }
-
-            var start_time = performance.now();
             document.getElementById('result').innerHTML = "<em>working</em>";
             setTimeout(() => {
-                var result = search(end);
-                var delta = performance.now() - start_time;
-                document.getElementById('result').innerHTML = result + "<p><em>elapsed time: " + (delta / 1000.0).toFixed(2) + " seconds</em></p>";
+                // cmk rename search and end_string
+                var result = search(end_string);
+                document.getElementById('result').innerHTML = result;
             }, 0);
         }
 
