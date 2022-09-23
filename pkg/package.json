@@ -1,0 +1,12 @@
+{
+  "name": "rust-ast-explorer",
+  "version": "0.1.0",
+  "files": [
+    "rust_ast_explorer_bg.wasm",
+    "rust_ast_explorer.js",
+    "rust_ast_explorer.d.ts"
+  ],
+  "module": "rust_ast_explorer.js",
+  "types": "rust_ast_explorer.d.ts",
+  "sideEffects": false
+}
