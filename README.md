@@ -1,5 +1,7 @@
 # Rust AST Explorer
 
+Hosted Live: https://carlkcarlk.github.io/rust-ast-explorer/
+
 Paste Rust code and see the AST (abstract syntax tree) it generates.
 
 ### Based on
