@@ -1,6 +1,6 @@
 {
   "name": "rust-ast-explorer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "files": [
     "rust_ast_explorer_bg.wasm",
     "rust_ast_explorer.js",

@@ -142,7 +142,7 @@ async function load(module, imports) {
 function getImports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbg_alert_1a44b408ee490c07 = function(arg0, arg1) {
+    imports.wbg.__wbg_alert_c5e057933ef1c53c = function(arg0, arg1) {
         alert(getStringFromWasm0(arg0, arg1));
     };
 

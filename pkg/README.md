@@ -4,6 +4,10 @@ Hosted Live: https://carlkcarlk.github.io/rust-ast-explorer/
 
 Paste Rust code and see the AST (abstract syntax tree) it generates.
 
+## Alternative:
+
+* https://astexplorer.net/ -- fancier, mouse over the language to select Rust
+
 ### Based on
 
 * The syn crate provides the Rust parser and the debug formatter.
